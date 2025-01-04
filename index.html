@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREND TROVES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color:rosybrown;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        img{
+            border: 2px solid orangered;
+            border-radius: 100px;
+            width: 100px;
+            border-style:outset;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            background-color:rosybrown;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .feedback-form label {
+            margin: 10px 0 5px;
+        }
+        .feedback-form textarea {
+            resize: none;
+        }
+        .cart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .cart-indicator {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .coupon-box {
+            background-color: pink;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .coupon-box input {
+            padding: 5px;
+            margin: 5px;
+        }
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            nav a {
+                margin: 5px 0;
+                flex: 1 1 auto;
+                text-align: center;
+            }
+
+            .products {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .cart-container {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .feedback-form {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="c:\Users\91701\Desktop\TREND TROVES.png">
+        <h1>TREND TROVES</h1>
+    </div>
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('shop')">Shop</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('contact')">Contact</a>
+        <a onclick="showSection('cart')">Cart <span id="cart-count" class="cart-indicator">0</span></a>
+    </nav>
+</header>
+
+<section id="home" class="section active">
+    <h1>Welcome to Trend Troves</h1>
+    <p>Trend Troves – Where Trendy Meets Timeless!
+       <br>
+       At Trend Troves, we bring you the latest and greatest
+       <br>
+       in trending products, from fashion to tech and everything in between.
+       <br>
+       Whether you’re searching for the season’s must-have accessories or 
+       <br>
+       the next big gadget, we’ve got you covered!
+       <br>
+       <br>
+       Shop Now – Your next trend is just a click away.
+       <br>
+       <br>
+       Follow Us:
+       Instagram|@
+       #TrendTroves
+       </p>
+</section>
+
+<section id="shop" class="section">
+    <h1>Shop Products</h1>
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>₹29.99</p>
+            <button onclick="updateProductQuantity('Product 1', 29.99, 1)">+</button>
+            <button onclick="addToCart('Product 1', 29.99)">Add to Cart</button>
+            <button onclick="updateProductQuantity('Product 1', 29.99, -1)">-</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>₹39.99</p>
+            <button onclick="updateProductQuantity('Product 2', 39.99, 1)">+</button>
+            <button onclick="addToCart('Product 2', 39.99)">Add to Cart</button>
+            <button onclick="updateProductQuantity('Product 2', 39.99, -1)">-</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 3">
+            <h3>Product 3</h3>
+            <p>₹49.99</p>
+            <button onclick="updateProductQuantity('Product 3', 49.99, 1)">+</button>
+            <button onclick="addToCart('Product 3', 49.99)">Add to Cart</button>
+            <button onclick="updateProductQuantity('Product 3', 49.99, -1)">-</button>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <h1>About Us</h1>
+    <p>Trend Troves is founded in 2025 with the mission of providing high-quality
+       <br> 
+       products which are trending to customers worldwide.
+       <br>
+       Our dedication to excellent service and affordability sets us apart.
+       <br>
+       
+       <img src="https://www.founderjar.com/wp-content/uploads/2022/05/Trending-Products-to-Sell-Online.jpg" style="position: absolute;center: 100px;">
+    </p>
+</section>
+
+<section id="contact" class="section">
+    <h1>Contact Us</h1>
+    <p>Email: support@eshop.com</p>
+    <form class="feedback-form">
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" rows="4" placeholder="Write your feedback here..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<section id="cart" class="section">
+    <h1>Your Cart</h1>
+    <div id="cart-items" class="cart-container"></div>
+    <div id="cart-total" class="cart-container">Total: ₹0.00</div>
+    <div id="shipping" class="cart-container">Shipping: ₹80</div>
+    <div id="final-total" class="cart-container">Final Total: ₹80</div>
+    <div class="coupon-box">
+        <label for="coupon">Have a coupon?</label>
+        <input type="text" id="coupon" placeholder="Enter coupon code">
+        <button type="button" onclick="applyCoupon()">Apply</button>
+    </div>
+    <form class="cart-container">
+        <label for="address">Delivery Address:</label>
+        <input type="text" id="address" placeholder="Enter your address" required>
+        <button type="button" onclick="proceedToPayment()">Pay Now</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 E-Shop. All rights reserved.</p>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    const cart = {};
+        let cartItemCount = 0;
+        let cartTotal = 0;
+        let discount = 0;
+        const shippingCost = 80;
+
+        // Function to update the quantity of a product in the cart
+        function updateProductQuantity(productName, productPrice, change) {
+            if (!cart[productName]) {
+                cart[productName] = { quantity: 0, price: productPrice };
+            }
+            cart[productName].quantity += change;
+
+            // Prevent negative quantities
+            if (cart[productName].quantity < 0) cart[productName].quantity = 0;
+
+            updateCart();
+        }
+
+        // Function to add a product to the cart
+        function addToCart(productName, productPrice) {
+            if (!cart[productName]) {
+                cart[productName] = { quantity: 0, price: productPrice };
+            }
+            cart[productName].quantity += 1;
+            updateCart();
+        }
+
+        // Function to update the cart display
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';  // Clear previous items
+
+            cartItemCount = 0;
+            cartTotal = 0;
+
+            // Loop through the cart and display each item
+            for (const productName in cart) {
+                const product = cart[productName];
+                if (product.quantity > 0) {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `
+                        <span>${productName} x${product.quantity}</span>
+                        <span>₹${product.price * product.quantity}</span>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                    cartItemCount += product.quantity;
+                    cartTotal += product.price * product.quantity;
+                }
+            }
+
+            // Update total, shipping, and final total
+            document.getElementById('cart-count').textContent = cartItemCount;
+            document.getElementById('cart-total').textContent = `Total: ₹${cartTotal}`;
+            const finalTotal = cartTotal + shippingCost - discount;
+            document.getElementById('final-total').textContent = `Final Total: ₹${finalTotal}`;
+        }
+
+        // Function to apply coupon
+        function applyCoupon() {
+            const couponCode = document.getElementById('coupon').value.trim();
+            if (couponCode === 'TRENDT5') {
+                discount = 80;
+                alert('Coupon applied! ₹80 discount added to your order.');
+            } else {
+                discount = 0;
+                alert('Invalid coupon code.');
+            }
+            updateCart();
+        }
+
+        // Function to proceed to payment (can be further customized)
+        function proceedToPayment() {
+            const address = document.getElementById('address').value;
+            if (!address) {
+                alert('Please provide a delivery address!');
+                return;
+            }
+            alert(`Order placed successfully! Shipping to: ${address}`);
+        }
+    </script>
+</body>
+</html>
